@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  selector:
+    matchLabels:
+      project: kubernetes-project
+      app: application
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        project: kubernetes-project
+        app: application
+        tier: frontend
+    spec: 
+      containers:
+      - name: app-pod
+        image: nyamwange/webapp:1.0.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
